@@ -1,2 +1,9 @@
 server:
   port: 8090
+
+---
+# Swagger3 配置
+spring:
+  mvc:
+    path match:
+      matching-strategy: ant_path_matcher
