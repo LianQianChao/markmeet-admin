@@ -1,6 +1,15 @@
 server:
   port: 8090
+spring:
+  datasource:
+    type: 
 
+---
+# 热部署
+spring:
+  devtools:
+    restart:
+      enabled: true
 ---
 # Swagger3 配置
 spring:
