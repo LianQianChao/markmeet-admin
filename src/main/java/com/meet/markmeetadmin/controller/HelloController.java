@@ -5,6 +5,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+
 /**
  * @author LianQianChao
  */
@@ -14,7 +16,8 @@ public class HelloController {
 
     @ApiOperation("HelloWorld")
     @GetMapping(path = "/hello")
-    public String hello(){
-        return "Hello World!";
+    public Person hello(){
+
+        return new Person("小米",12);
     }
 }
