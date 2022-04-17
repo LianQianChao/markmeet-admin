@@ -1,7 +1,6 @@
 package com.meet.markmeetadmin.model.vo;
 
 import lombok.*;
-
 /**
  * @author LianQianChao
  */
@@ -11,6 +10,7 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 public class UserVO {
+
 
     private String username;
 
