@@ -2,7 +2,7 @@ package com.meet.markmeetadmin.config;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.meet.markmeetadmin.common.BaseResponse;
+import com.meet.markmeetadmin.common.http.BaseResponse;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -29,12 +29,12 @@ public class CommonResultControllerAdvice implements ResponseBodyAdvice<Object> 
         if(returnType.getGenericParameterType().equals(String.class)){
             ObjectMapper objectMapper = new ObjectMapper();
             try {
-                return objectMapper.writeValueAsString(BaseResponse.ok(body));
+                return objectMapper.writeValueAsString(BaseResponse.success(body));
             }catch (JsonProcessingException e){
                 //TODO 等待添加异常处理
                 System.out.println("ResultControllerAdvice error: 返回String类型错误");
             }
         }
-        return BaseResponse.ok(body);
+        return BaseResponse.success(body);
     }
 }

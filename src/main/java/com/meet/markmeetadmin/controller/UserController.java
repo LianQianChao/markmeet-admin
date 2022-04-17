@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 /**
  * @author LianQianChao
  */
@@ -20,7 +22,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public Boolean login(UserVO userVO){
+    public Boolean login(@RequestBody @Valid UserVO userVO){
         System.out.println(userVO.toString());
         Integer result = userServiceImpl.selectUserByNameAndPassword(userVO);
         return result == 1;
