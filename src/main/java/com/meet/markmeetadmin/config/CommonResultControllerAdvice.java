@@ -39,6 +39,7 @@ public class CommonResultControllerAdvice implements ResponseBodyAdvice<Object> 
                 throw new APIException(ResultCode.RETURN_TYPE_ERROR);
             }
         }
-        return new BaseResponse<>(body);
+        BaseResponse<Object> br = new BaseResponse<>(body);
+        return br;
     }
 }

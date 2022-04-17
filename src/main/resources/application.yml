@@ -22,6 +22,7 @@ spring:
   devtools:
     restart:
       enabled: true
+      additional-paths: src/main/java #重启目录
 ---
 # Swagger3 配置
 spring:

@@ -9,9 +9,6 @@ import lombok.Getter;
 public enum ResultCode {
 
     SUCCESS(2000, "操作成功"),
-    ADD_SUCCESS(2001,"添加成功"),
-    DELETE_SUCCESS(2002,"删除成功"),
-    UPDATE_SUCCESS(2003,"修改成功"),
 
     FAILED(4000, "操作失败"),
     ADD_FAILED(4001,"添加失败"),

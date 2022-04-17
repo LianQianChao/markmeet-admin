@@ -19,15 +19,15 @@ public class BaseResponse<T> {
     private T data;
 
     public BaseResponse(ResultCode resultCode,T data){
-        new BaseResponse<>(resultCode.getCode(),resultCode.getMessage(),data);
+        this(resultCode.getCode(),resultCode.getMessage(),data);
     }
     
     public BaseResponse(ResultCode resultCode){
-        new BaseResponse<>(resultCode,null);
+       this(resultCode,null);
     }
     
     public BaseResponse(T data){
-        new BaseResponse<>(ResultCode.SUCCESS,data);
+        this(ResultCode.SUCCESS,data);
     }
 
     public BaseResponse(int code,String message, T data){
