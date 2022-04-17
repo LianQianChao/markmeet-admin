@@ -16,8 +16,8 @@ public class HelloController {
 
     @ApiOperation("HelloWorld")
     @GetMapping(path = "/hello")
-    public Person hello(){
+    public String hello(){
 
-        return new Person("小米",12);
+        return "Hello";
     }
 }
