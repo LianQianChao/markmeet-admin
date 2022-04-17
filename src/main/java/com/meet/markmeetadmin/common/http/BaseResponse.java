@@ -8,32 +8,32 @@ import org.springframework.http.HttpStatus;
  */
 @Data
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
 public class BaseResponse<T> {
 
-    private Integer code;
+    private int code;
 
     private String message;
 
     private T data;
 
     public BaseResponse(ResultCode resultCode,T data){
-       this.code = resultCode.getCode();
-       this.message = resultCode.getMessage();
-       this.data = data;
+        new BaseResponse<>(resultCode.getCode(),resultCode.getMessage(),data);
+    }
+    
+    public BaseResponse(ResultCode resultCode){
+        new BaseResponse<>(resultCode,null);
+    }
+    
+    public BaseResponse(T data){
+        new BaseResponse<>(ResultCode.SUCCESS,data);
     }
 
-    public static <K> BaseResponse<K> success( String message, K data){
-        return new BaseResponse<>(ResultCode.SUCCESS.getCode(), message,data);
+    public BaseResponse(int code,String message, T data){
+        this.code = code;
+        this.message = message;
+        this.data = data;
     }
 
-    public static <K> BaseResponse<K> success(String message){
-        return new BaseResponse<>(ResultCode.SUCCESS.getCode(), message,null);
-    }
-
-    public static <K> BaseResponse<K> success(K data){
-        return new BaseResponse<>(ResultCode.SUCCESS,data);
-    }
 }
