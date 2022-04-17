@@ -16,6 +16,7 @@ public enum ResultCode {
     UPDATE_FAILED(4003,"修改失败"),
     VALIDATE_FAILED(4004,"参数校验失败"),
     RETURN_TYPE_ERROR(4005,"返回类型错误"),
+    LOGIN_FAILED(4006,"登录失败"),
 
     ERROR(5000,"未知错误");
 

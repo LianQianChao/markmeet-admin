@@ -7,5 +7,5 @@ import com.meet.markmeetadmin.model.vo.UserVO;
  */
 public interface UserService {
 
-    Integer selectUserByNameAndPassword(UserVO userVO);
+    Boolean selectUserByNameAndPassword(UserVO userVO);
 }

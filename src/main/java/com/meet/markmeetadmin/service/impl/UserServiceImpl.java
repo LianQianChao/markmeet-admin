@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Integer selectUserByNameAndPassword(UserVO userVO) {
-        return userMapper.selectUserByNameAndPassword(userVO);
+    public Boolean selectUserByNameAndPassword(UserVO userVO) {
+        return userMapper.selectUserByNameAndPassword(userVO) == 1;
     }
 }
