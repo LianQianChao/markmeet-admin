@@ -8,5 +8,9 @@
         select count(1) from user where  username = #{username} and password = #{password}
     </select>
 
+    <select id="getAllUsers" resultType="User">
+        select * from user
+    </select>
+
 
 </mapper>

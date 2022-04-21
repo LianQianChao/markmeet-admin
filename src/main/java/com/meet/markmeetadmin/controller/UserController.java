@@ -1,15 +1,13 @@
 package com.meet.markmeetadmin.controller;
 
-import com.meet.markmeetadmin.common.http.ResultCode;
-import com.meet.markmeetadmin.exception.APIException;
-import com.meet.markmeetadmin.model.vo.UserVO;
+import com.github.pagehelper.PageInfo;
+import com.meet.markmeetadmin.model.entity.User;
 import com.meet.markmeetadmin.service.impl.UserServiceImpl;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
+
 
 /**
  * @author LianQianChao
@@ -17,18 +15,17 @@ import javax.validation.Valid;
 @RestController
 public class UserController {
 
-    private final UserServiceImpl userServiceImpl;
+    private final UserServiceImpl userService;
 
-    public UserController(UserServiceImpl userServiceImpl) {
-        this.userServiceImpl = userServiceImpl;
+    public UserController(UserServiceImpl userService) {
+        this.userService = userService;
     }
 
-    @PostMapping("/login")
-    public String login(@RequestBody @Valid UserVO userVO){
-        System.out.println(userVO);
-        if(!userServiceImpl.selectUserByNameAndPassword(userVO)){
-            throw new APIException(ResultCode.LOGIN_FAILED);
-        }
-        return "登录成功";
+    @GetMapping("/users")
+    public PageInfo<User> getAllUserByPage(@RequestParam(value = "page",defaultValue = "1") int page,
+                                           @RequestParam(value = "offset",defaultValue = "10") int offset) {
+        return userService.getAllUserByPage(page, offset);
     }
+
+
 }

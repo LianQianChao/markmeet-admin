@@ -32,7 +32,7 @@ spring:
 
 
 ---
-## Mybatis配置
+# Mybatis配置
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.meet.markmeetadmin.model
@@ -44,3 +44,11 @@ logging:
           app:
             speed:
               mapper: debug
+
+---
+# 分页插件
+page helper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
