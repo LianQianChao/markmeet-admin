@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.meet.markmeetadmin.mapper.UserMapper;
 import com.meet.markmeetadmin.model.entity.User;
+import com.meet.markmeetadmin.model.vo.LoginVO;
 import com.meet.markmeetadmin.model.vo.UserVO;
 import com.meet.markmeetadmin.service.UserService;
 import org.springframework.stereotype.Service;
@@ -18,15 +19,15 @@ public class UserServiceImpl implements UserService {
 
     private final UserMapper userMapper;
 
-    public UserServiceImpl(UserMapper userMapper){
+    public UserServiceImpl(UserMapper userMapper) {
 
         this.userMapper = userMapper;
     }
 
 
     @Override
-    public Boolean selectUserByNameAndPassword(UserVO userVO) {
-        return userMapper.selectUserByNameAndPassword(userVO) == 1;
+    public Boolean selectUserByNameAndPassword(LoginVO loginVO) {
+        return userMapper.selectUserByNameAndPassword(loginVO) == 1;
     }
 
     @Override
@@ -36,10 +37,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public PageInfo<User> getAllUserByPage(int page, int offset) {
-        System.out.println(page + ":" + offset);
-        PageHelper.startPage(page,offset);
+        PageHelper.startPage(page, offset);
         List<User> users = userMapper.getAllUsers();
         return new PageInfo<>(users);
+    }
+
+    @Override
+    public Boolean addUser(UserVO userVO) {
+        return userMapper.addUser(userVO) == 1;
     }
 
 }

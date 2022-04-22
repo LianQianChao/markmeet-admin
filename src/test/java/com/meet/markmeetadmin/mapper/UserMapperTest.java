@@ -1,10 +1,13 @@
 package com.meet.markmeetadmin.mapper;
 
 import com.meet.markmeetadmin.model.entity.User;
+import com.meet.markmeetadmin.model.vo.LoginVO;
 import com.meet.markmeetadmin.model.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -14,6 +17,7 @@ import java.util.List;
  */
 @SpringBootTest
 @Slf4j
+@Transactional
 public class UserMapperTest {
 
     @Resource
@@ -21,7 +25,8 @@ public class UserMapperTest {
 
     @Test
     public void selectUserByNamePassword(){
-        int count = userMapper.selectUserByNameAndPassword(new UserVO("aaa","12345"));
+        int count = userMapper.selectUserByNameAndPassword(new LoginVO("aaa","12345"));
+        Assertions.assertEquals(1, count);
         log.info("select User: "+count);
     }
 
@@ -30,5 +35,11 @@ public class UserMapperTest {
         List<User> users = userMapper.getAllUsers();
         log.info("########GetAllUser#########");
         log.info(users.toString());
+    }
+
+    @Test
+    public void addUser(){
+        int count = userMapper.addUser(new UserVO("admin1","123456","黎明","i@lchao.cc"));
+        Assertions.assertEquals(1,count);
     }
 }

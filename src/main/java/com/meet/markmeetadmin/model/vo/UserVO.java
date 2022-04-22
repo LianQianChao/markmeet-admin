@@ -2,7 +2,7 @@ package com.meet.markmeetadmin.model.vo;
 
 import lombok.*;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 /**
@@ -15,10 +15,17 @@ import javax.validation.constraints.Size;
 @EqualsAndHashCode
 public class UserVO {
 
-    @NotNull(message = "用户账号不能为空")
+    @NotBlank(message = "用户名不能为空")
     private String username;
 
-    @NotNull(message = "用户密码不能为空")
-    @Size(min = 6,message = "密码长度必须大于等于6")
+    @NotBlank(message = "密码不能为空")
+    @Size(min = 6 ,message = "密码不能小于6位")
     private String password;
+
+    @NotBlank(message = "昵称不能为空")
+    private String nickname;
+
+    @NotBlank(message = "邮箱不能为空")
+    private String email;
+
 }

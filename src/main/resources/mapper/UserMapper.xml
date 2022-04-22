@@ -4,13 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.meet.markmeetadmin.mapper.UserMapper">
 
-    <select id="selectUserByNameAndPassword" parameterType="UserVO" resultType="int">
-        select count(1) from user where  username = #{username} and password = #{password}
+    <select id="selectUserByNameAndPassword" parameterType="LoginVO" resultType="int">
+        select count(1)
+        from user
+        where username = #{username}
+          and password = #{password}
     </select>
 
     <select id="getAllUsers" resultType="User">
-        select * from user
+        select *
+        from user
     </select>
 
-
+    <insert id="addUser" parameterType="UserVO">
+        insert into user(id, username, password, nickname, email)
+        values (id, #{username}, #{password}, #{nickname}, #{email})
+    </insert>
 </mapper>

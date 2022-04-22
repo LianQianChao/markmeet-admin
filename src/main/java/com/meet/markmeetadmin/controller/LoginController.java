@@ -2,6 +2,7 @@ package com.meet.markmeetadmin.controller;
 
 import com.meet.markmeetadmin.common.http.ResultCode;
 import com.meet.markmeetadmin.exception.APIException;
+import com.meet.markmeetadmin.model.vo.LoginVO;
 import com.meet.markmeetadmin.model.vo.UserVO;
 import com.meet.markmeetadmin.service.impl.UserServiceImpl;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,8 +24,8 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody @Valid UserVO userVO){
-        if(!userServiceImpl.selectUserByNameAndPassword(userVO)){
+    public String login(@RequestBody @Valid LoginVO loginVO){
+        if(!userServiceImpl.selectUserByNameAndPassword(loginVO)){
             throw new APIException(ResultCode.LOGIN_FAILED);
         }
         return "登录成功";
